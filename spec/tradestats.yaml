@@ -1,0 +1,135 @@
+swagger: "2.0"
+
+info:
+  version: "0.0.1"
+  title: Trade
+  description:
+    Provides an interface for Trade service.
+
+host: 127.0.0.1:25000
+
+basePath:  /
+
+schemes:
+  - http
+
+produces:
+  - application/json
+
+paths:
+  '/ticks':
+    post:
+      tags:
+        - "Trade"
+      summary: "Add or Update Statistics"
+      description:
+        "Add or Update Statistics"
+      operationId: addOrUpdateStatistics
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+      - name: stats
+        in: body
+        description: "stats"
+        required: true
+        schema:
+          $ref: '#/definitions/Tick'
+      responses:
+        201:
+          description: "Stats updated successfully"
+        204:
+          description: "Stats updated successfully"
+        400:
+          description: "Invalid input error"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+            
+  '/statistics':
+    get:
+      tags:
+        - "Trade"
+      summary: "Get Trade Statistics"
+      description:
+        "Get Trade Statistics"
+      operationId: getStatistics
+      produces:
+        - application/json
+      responses:
+        200:
+          description: "Trade Statistics"
+          schema:
+            $ref: '#/definitions/TradeStats'
+        400:
+          description: "Invalid input supplied"
+        500:
+          description: "Internal error"
+          
+  '/statistics/{instrument}':
+    get:
+      tags:
+        - "Trade"
+      summary: "Get Trade Statistics"
+      description:
+        "Get Trade Statistics"
+      operationId: getInstrumentStatistics
+      produces:
+        - application/json
+      parameters:
+      - name: instrument
+        in: path
+        description: instrument id
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Trade Statistics"
+          schema:
+            $ref: '#/definitions/TradeStats'
+        400:
+          description: "Invalid input supplied"
+        500:
+          description: "Internal error"
+
+definitions:
+  Tick:
+    type: object
+    description:
+      ticks
+    properties:
+      instrument:
+        type: string
+      price:
+        type: number
+        format: double
+      timestamp:
+        type: integer
+        format: int64
+  TradeStats:
+    type: object
+    description:
+      ticks
+    properties:
+      max:
+        type: number
+        format: double
+      min:
+        type: number
+        format: double
+      avg:
+        type: number
+        format: double
+      count:
+        type: integer
+        format: int64
+  ErrorResponse:
+      description: If errors happen this is how you they are sent. Notice how all messages
+        are wrapped inside an errors array? You should do this to help services
+        that cannot get to HTTP status to know if an API command was successfu
+        or not. Why an array? In case you have multiple error messages to send.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
