@@ -1,4 +1,4 @@
-# Trade Stats Service
+# Trade Statistics Service
 The Trade stats service provides financial index statistics calulation based on tick request received and provides statistics data for the last 60 seconds (sliding time interval) on received ticks. The tick will be received at any point of time, prior to current timestamp as well. The tick API and statistics API provides concurrent access support to serve from many instruments.
 
 # Build
@@ -30,7 +30,7 @@ The following properties can be configured either through command line arguments
 |Name|Description|default|
 |----|-----------|-------|
 |server.port|service port|25000|
-|trade.monitor-time-in-millis|time to expire tick for statistics calculation|60000|
+|trade.monitor-time-in-millis|time to expire tick from statistics calculation|60000|
 
 ## Swagger UI
 The project is integrated with swagger and all the API can be viewed and accessed in the swagger ui.
