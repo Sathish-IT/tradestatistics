@@ -52,8 +52,9 @@ The following areas could be improved further
 1. Logger support with log4j so that different levels of logging could be done and used in scalability/normal mode test setup with info/debug/warn level kind of support. When sysout is replaced with logger then performance would be improved further.
 2. HTTPS support could be provided for Security improvement on API access.
 3. Performance would be improved when using modelmapper and avg calculation could be done only at the time of mapping response object as it requires only sum and count values. It avoids avg calculation that is made during every iterations. As modelmapper doesnot lombok for mapping the AtomicDecimal to decimal values it is not done during implemenations. If that is resolved there could be considerable performance improvements. 
-3. Queueing input tick request could improve performance a little though still concurrent map is used for storing the tick values.
-4. Junit for scalability can be added and improved from existing test cases and few more general test cases could be added.
+4. Queueing input tick request could improve performance a little though still concurrent map is used for storing the tick values.
+5. Junit for scalability can be added and improved from existing test cases and few more general test cases could be added.
+6. Integrate Sonar for code quality analysis and reports.
 
 ## Challenge
 I like this challenge as it touches and evaluate skillset in many areas. Multithreading is really interesting. Its really Good. 
