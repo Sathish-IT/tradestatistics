@@ -1,7 +1,7 @@
 # Trade Statistics Service
 The Trade stats service provides financial index statistics calulation based on tick request received and provides statistics data for the last 60 seconds (sliding time interval) on received ticks. The tick will be received at any point of time, prior to current timestamp as well. The tick API and statistics API provides concurrent access support to serve from many instruments.
 
-# Build
+# How to Build
 #### **Note:** This project currently requires Java 11
 
 ##### Using command line argument
